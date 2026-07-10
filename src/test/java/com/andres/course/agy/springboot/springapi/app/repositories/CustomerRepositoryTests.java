@@ -19,7 +19,7 @@ class CustomerRepositoryTests {
 
     @Test
     void testSaveCustomerAndAuditing() {
-        Customer customer = new Customer("John", "Doe", "john.doe@example.com", "123456789", "123 Main St");
+        Customer customer = new Customer("John", "Doe", "john.doe.test@example.com", "123456789", "123 Main St");
         
         Customer savedCustomer = customerRepository.saveAndFlush(customer);
 
@@ -35,7 +35,7 @@ class CustomerRepositoryTests {
 
     @Test
     void testUpdateCustomerAndAuditing() throws InterruptedException {
-        Customer customer = new Customer("Jane", "Doe", "jane.doe@example.com", "987654321", "456 Oak Ave");
+        Customer customer = new Customer("Jane", "Doe", "jane.doe.test@example.com", "987654321", "456 Oak Ave");
         Customer savedCustomer = customerRepository.saveAndFlush(customer);
         
         LocalDateTime initialCreatedAt = savedCustomer.getCreatedAt();
