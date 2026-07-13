@@ -2,6 +2,7 @@ package com.andres.course.agy.springboot.springapi.app.controllers;
 
 import com.andres.course.agy.springboot.springapi.app.dto.UserDto;
 import com.andres.course.agy.springboot.springapi.app.dto.UserCreateDto;
+import com.andres.course.agy.springboot.springapi.app.dto.UserUpdateDto;
 import com.andres.course.agy.springboot.springapi.app.services.UserService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
@@ -36,6 +37,15 @@ public class UserController {
     public ResponseEntity<UserDto> createUser(@Valid @RequestBody UserCreateDto userCreateDto) {
         UserDto createdUser = userService.create(userCreateDto);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdUser);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<UserDto> updateUser(
+            @PathVariable Long id,
+            @Valid @RequestBody UserUpdateDto userUpdateDto
+    ) {
+        UserDto updatedUser = userService.update(id, userUpdateDto);
+        return ResponseEntity.ok(updatedUser);
     }
 
     @DeleteMapping("/{id}")
