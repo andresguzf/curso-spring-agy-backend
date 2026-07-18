@@ -46,6 +46,14 @@ public class SecurityConfig {
                 .requestMatchers(HttpMethod.POST, "/api/customers/**").hasRole("ADMIN")
                 .requestMatchers(HttpMethod.PUT, "/api/customers/**").hasRole("ADMIN")
                 .requestMatchers(HttpMethod.DELETE, "/api/customers/**").hasRole("ADMIN")
+
+                // Read operations on invoices are allowed for both USER and ADMIN roles
+                .requestMatchers(HttpMethod.GET, "/api/invoices/**").hasAnyRole("USER", "ADMIN")
+                
+                // Write/Modify operations on invoices are restricted to ADMIN
+                .requestMatchers(HttpMethod.POST, "/api/invoices/**").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.PUT, "/api/invoices/**").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.DELETE, "/api/invoices/**").hasRole("ADMIN")
                 
                 // Allow H2 console
                 .requestMatchers("/h2-console/**").permitAll()
