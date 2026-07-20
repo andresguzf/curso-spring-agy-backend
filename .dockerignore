@@ -1,0 +1,30 @@
+# Ignore build outputs
+target/
+*.jar
+*.war
+
+# Ignore local configuration and sensitive files
+.env
+.env*
+*.local
+*.properties.local
+
+# Ignore Git directory and configuration
+.git
+.gitignore
+.gitattributes
+
+# Ignore IDE settings and tool folders
+.idea/
+.vscode/
+*.iml
+.agents/
+.claude/
+.DS_Store
+
+# Ignore documentation/help files
+HELP.md
+README.md
+AGENTS.md
+docker-compose*.yml
+Dockerfile
