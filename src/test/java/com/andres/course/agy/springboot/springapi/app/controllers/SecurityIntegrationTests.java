@@ -39,6 +39,16 @@ class SecurityIntegrationTests {
     }
 
     @Test
+    void testCorsHeadersArePresent() throws Exception {
+        mockMvc.perform(options("/api/auth/login")
+                .header("Origin", "http://localhost:5173")
+                .header("Access-Control-Request-Method", "POST"))
+                .andExpect(status().isOk())
+                .andExpect(header().string("Access-Control-Allow-Origin", "http://localhost:5173"))
+                .andExpect(header().string("Access-Control-Allow-Credentials", "true"));
+    }
+
+    @Test
     void testUnauthenticatedAccessBlocked() throws Exception {
         mockMvc.perform(get("/api/customers"))
                 .andExpect(status().isForbidden());
