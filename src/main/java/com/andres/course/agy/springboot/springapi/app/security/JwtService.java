@@ -6,6 +6,7 @@ import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import javax.crypto.SecretKey;
 import org.springframework.http.ResponseCookie;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.nio.charset.StandardCharsets;
@@ -14,6 +15,12 @@ import java.util.Date;
 
 @Component
 public class JwtService {
+
+    @Value("${jwt.cookie.secure}")
+    private boolean cookieSecure;
+
+    @Value("${jwt.cookie.same-site}")
+    private String cookieSameSite;
 
     // A secure base64-encoded or simple plain secret string (at least 256 bits / 32 bytes)
     private final String secretString = "v9y$B&E)H@McQfTjWnZr4u7x!z%C*F-JaNdRgUkXp2s5v8y/B?D(G+KbPeShVmYq";
@@ -99,8 +106,8 @@ public class JwtService {
         return ResponseCookie.from(cookieName, jwtToken)
                 .path("/")
                 .httpOnly(true)
-                .secure(false) // Set to true in production with HTTPS
-                .sameSite("Lax")
+                .secure(cookieSecure)
+                .sameSite(cookieSameSite)
                 .maxAge(expirationMs / 1000)
                 .build();
     }
@@ -114,8 +121,8 @@ public class JwtService {
         return ResponseCookie.from(cookieName, "")
                 .path("/")
                 .httpOnly(true)
-                .secure(false)
-                .sameSite("Lax")
+                .secure(cookieSecure)
+                .sameSite(cookieSameSite)
                 .maxAge(0) // Expire immediately
                 .build();
     }
