@@ -40,3 +40,7 @@ Este archivo proporciona contexto técnico e histórico del desarrollo del módu
 - Entidades: [Customer.java](file:///Users/andres/Desktop/SpringAntigravityAI/3-spring-api/src/main/java/com/andres/course/agy/springboot/springapi/app/models/Customer.java) \| [User.java](file:///Users/andres/Desktop/SpringAntigravityAI/3-spring-api/src/main/java/com/andres/course/agy/springboot/springapi/app/models/User.java)
 - Controladores: [AuthController.java](file:///Users/andres/Desktop/SpringAntigravityAI/3-spring-api/src/main/java/com/andres/course/agy/springboot/springapi/app/controllers/AuthController.java) \| [UserController.java](file:///Users/andres/Desktop/SpringAntigravityAI/3-spring-api/src/main/java/com/andres/course/agy/springboot/springapi/app/controllers/UserController.java)
 - Pruebas: [SecurityIntegrationTests.java](file:///Users/andres/Desktop/SpringAntigravityAI/3-spring-api/src/test/java/com/andres/course/agy/springboot/springapi/app/controllers/SecurityIntegrationTests.java)
+
+## 6. Repositorio Remoto
+- **GitHub Repository**: [curso-spring-agy-backend](https://github.com/andresguzf/curso-spring-agy-backend)
+
